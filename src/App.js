@@ -54,12 +54,9 @@ const KEY = "ebe150f4";
 export default function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState(function () {
-    const stored = localStorage.getItem(
-      "watched",
-      JSON.stringify(tempWatchedData)
-    );
-    return JSON.parse(stored);
+  const [watched, setWatched] = useState(() => {
+    const stored = localStorage.getItem("watched");
+    return stored ? JSON.parse(stored) : tempWatchedData;
   });
   // const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
